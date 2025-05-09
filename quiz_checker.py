@@ -37,21 +37,16 @@
 #   - Call the check_answers() function using default filenames.
 
 
-import os
-
-def check_file(filename, default_content):
-    if not os.path.exists(filename):
-        with open(filename, "w") as file:
-            file.write(default_content)
-        print("Created missing file: {filename}")
-    else:
-        print("File already exists: {filename}")
-
-if __name__ == "__main__":
-    user_default = "1.a\n2.b\n3.c\n"
-    correct_default = "1.a\n2.c\n3.c\n"
-
-    check_file("answers.txt", user_default)
-    check_file("correct_answers.txt", correct_default)
-
-    check_answers()
+def load_answers(filename):
+    answers = {}
+    try:
+        with open(filename, "r") as file:
+            for line in file:
+                parts = line.strip().split(".")
+                if len(parts) == 2:
+                    q_num, answer = parts
+                    answers[int(q_num)] = answer.lower()
+    except FileNotFoundError:
+        print(f"File '{filename}' not found.")
+        return None
+    return answers
