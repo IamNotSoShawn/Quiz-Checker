@@ -7,13 +7,13 @@
 #    - Split the line into two parts using the dot ('.') as a separator.
 #    - If there are exactly two parts:
 #      - The first part is the question number.
-#      - The second part is the answer (convert it to lowercase).
+#      - second part is the answer (convert it to lowercase).
 #      - Store the answer in the dictionary using the question number as the key.
 # 4. If the file can’t be found:
 #    - Show a message saying the file is missing.
 #    - Return nothing.
 # 5. Return the dictionary of answers.
-
+# answer key and user answer text file should be on the same folder 
 
 # 1. Load the user’s answers from their file.
 # 2. Load the correct answers from the correct answer file.
@@ -35,3 +35,23 @@
 # Main Program
 # - If this script is being run directly (not imported from somewhere else):
 #   - Call the check_answers() function using default filenames.
+
+
+import os
+
+def check_file(filename, default_content):
+    if not os.path.exists(filename):
+        with open(filename, "w") as file:
+            file.write(default_content)
+        print("Created missing file: {filename}")
+    else:
+        print("File already exists: {filename}")
+
+if __name__ == "__main__":
+    user_default = "1.a\n2.b\n3.c\n"
+    correct_default = "1.a\n2.c\n3.c\n"
+
+    check_file("answers.txt", user_default)
+    check_file("correct_answers.txt", correct_default)
+
+    check_answers()
