@@ -36,6 +36,9 @@
 # - If this script is being run directly (not imported from somewhere else):
 #   - Call the check_answers() function using default filenames.
 
+
+print("\nHello user. \nLet's check your score !\n\nhere is the result of you quiz :")
+
 def load_answers(filename):
     answers = {}
     try:
