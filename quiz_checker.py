@@ -61,6 +61,8 @@ def check_answers(user_file="answers.txt", correct_file="correct_answers.txt"):
     print("\n--- Quiz Results ---")
     score = 0
     total = len(correct_answers)
+    correct_ans = correct _answers[q_num]
     
 if __name__ == "__main__":
     check_answers()
+    
