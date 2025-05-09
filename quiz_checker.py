@@ -50,3 +50,17 @@ def load_answers(filename):
         print(f"File '{filename}' not found.")
         return None
     return answers
+
+def check_answers(user_file="answers.txt", correct_file="correct_answers.txt"):
+    user_answers = load_answers(user_file)
+    correct_answers = load_answers(correct_file)
+
+    if user_answers is None or correct_answers is None:
+        return
+
+    print("\n--- Quiz Results ---")
+    score = 0
+    total = len(correct_answers)
+    
+if __name__ == "__main__":
+    check_answers()
