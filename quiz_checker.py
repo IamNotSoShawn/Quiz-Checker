@@ -36,7 +36,6 @@
 # - If this script is being run directly (not imported from somewhere else):
 #   - Call the check_answers() function using default filenames.
 
-
 def load_answers(filename):
     answers = {}
     try:
@@ -61,8 +60,16 @@ def check_answers(user_file="answers.txt", correct_file="correct_answers.txt"):
     print("\n--- Quiz Results ---")
     score = 0
     total = len(correct_answers)
-    correct_ans = correct _answers[q_num]
-    
+
+    for q_num in sorted(correct_answers.keys()):
+        user_ans = user_answers.get(q_num)
+        correct_ans = correct_answers[q_num]
+        result = " Correct" if user_ans == correct_ans else f" Wrong (Correct: {correct_ans})"
+        print(f"Q{q_num}: You answered '{user_ans}' — {result}")
+        if user_ans == correct_ans:
+            score += 1
+
+    print(f"\nFinal Score: {score} out of {total}")
+
 if __name__ == "__main__":
     check_answers()
-    
